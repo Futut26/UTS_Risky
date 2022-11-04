@@ -67,8 +67,8 @@
 
 
     <section class="banner">
-        <h1>Compuer Store</h1>
-        <p>Company Mission Statement goes here</p>
+        <h1>Computer Store</h1>
+        <p>SENTRAL TEKNO SELARAS</p>
         <a class="btn-bgstroke">Call To Action</a>
     </section>
 
@@ -85,31 +85,20 @@
         </section>
 
         <section class="content">
-            <div class="max-video">
-                <video src="videos/button.mp4" autoplay></video>
-            </div>
             <div class="video-gallery-container">
-                
+                <div class="main-video-container">
+                    <video src="video/PC Desk Setup tour Cinematic.mp4" autoplay loop controls class="main-video"></video>
+                    <h3 class="main-vid-title">house flood animation</h3>
+                </div>
 
-                <div class="main-video">
-                    <video src="videos/button.mp4" autoplay muted controls></video>
-                    <i class='bx bx-x close'></i>
-                </div>
-                <div class="videos">
-                    <video src="videos/button.mp4"></video>
-                    <i class='bx bx-play-circle'></i>
-                </div>
-                <div class="videos">
-                    <video src="videos/website.mp4"></video>
-                    <i class='bx bx-play-circle'></i>
-                </div>
-                <div class="videos">
-                    <video src="videos/sidebar.mp4"></video>
-                    <i class='bx bx-play-circle'></i>
-                </div>
-                <div class="videos">
-                    <video src="videos/productCard.mp4"></video>
-                    <i class='bx bx-play-circle'></i>
+                <div class="video-list-container">
+
+                    <p> <b>SENTRAL TEKNO SELARAS </b><br>
+                         berdiri sejak tahun 1991 dengan awal berdirinya menjual PC assembly. Kemudian pada tahun 1994 bermitra dengan Intel Corp. dalam penjualan notebook karena potensi market dan mobilitas masyarakat yang cukup tinggi dalam penggunaan komputer. Hal ini berdampak positif dengan dibukanya beberapa retail store cabang kami di Jakarta, Bekasi, Bogor & Karawang.
+
+                        Pada tahun 2014 hingga saat ini, seiring dengan perkembangan marketplace online maka PT. SENTRAL TEKNO SELARAS melakukan penetrasi market kembali bekerja sama dengan LAZADA, BLIBLI, TOKOPEDIA, BUKALAPAK, SHOPEE DAN PASARWARGA sebagai merchant partner resmi untuk penjualan laptop dan komputer.</p>
+                    
+
                 </div>
             </div>
         </section>
@@ -227,28 +216,44 @@
         });
     </script>
 
-<script>
-    const section = document.querySelector(".content"),
-    mainVideo = document.querySelector(".main-video video"),
-     videos = document.querySelectorAll(".videos"),
-     close = document.querySelector(".close");
+    <script>
+        const section = document.querySelector(".content"),
+            mainVideo = document.querySelector(".main-video video"),
+            videos = document.querySelectorAll(".videos"),
+            close = document.querySelector(".close");
 
-     for (var i = 0; i < videos.length; i++) {
-       videos[i].addEventListener("click", (e)=>{
-         const target = e.target;
-         section.classList.add("active");
-         target.classList.add("active");
-         let src = document.querySelector(".videos.active video").src;
-         mainVideo.src = src;
+        for (var i = 0; i < videos.length; i++) {
+            videos[i].addEventListener("click", (e) => {
+                const target = e.target;
+                section.classList.add("active");
+                target.classList.add("active");
+                let src = document.querySelector(".videos.active video").src;
+                mainVideo.src = src;
 
-         close.addEventListener("click", ()=>{
-           section.classList.remove("active");
-           target.classList.remove("active");
-           mainVideo.src = "";
-         });
-       });
-     };
-  </script>
+                close.addEventListener("click", () => {
+                    section.classList.remove("active");
+                    target.classList.remove("active");
+                    mainVideo.src = "";
+                });
+            });
+        };
+    </script>
+
+    <script>
+        let videoList = document.querySelectorAll('.video-list-container .list');
+
+        videoList.forEach(vid => {
+            vid.onclick = () => {
+                videoList.forEach(remove => { remove.classList.remove('active') });
+                vid.classList.add('active');
+                let src = vid.querySelector('.list-video').src;
+                let title = vid.querySelector('.list-title').innerHTML;
+                document.querySelector('.main-video-container .main-video').src = src;
+                document.querySelector('.main-video-container .main-video').play();
+                document.querySelector('.main-video-container .main-vid-title').innerHTML = title;
+            };
+        });
+    </script>
 </body>
 
 </html>
